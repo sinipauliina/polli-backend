@@ -1,0 +1,98 @@
+{
+  "name": "Polli-backend",
+  "version": "0.0.1",
+  "author": {
+    "name": "Sini Pauliina Kolehmainen",
+    "email": "kolehmainen.sini@outlook.com",
+    "url": "https://www.sinipauliina.com"
+  },
+  "private": true,
+  "scripts": {
+    "node-start": "node ./src/bin/www",
+    "nodemon-start": "nodemon ./src/bin/www",
+    "babel-node-start": "babel-node ./src/bin/www",
+    "dev-start": "nodemon --exec babel-node ./src/bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.0.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "eslint": "^6.1.0",
+    "express": "~4.16.1",
+    "express-session": "^1.16.2",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.6.5",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "nodemon": "^1.19.1"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "env": {
+      "es6": true
+    },
+    "rules": {
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ],
+      "eol-last": [
+        2,
+        "always"
+      ],
+      "indent": [
+        2,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "max-len": [
+        2,
+        80,
+        2,
+        {
+          "ignoreUrls": true,
+          "ignoreComments": true
+        }
+      ],
+      "quotes": [
+        2,
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
+      "object-curly-spacing": [
+        2,
+        "never"
+      ],
+      "semi": [
+        2,
+        "never"
+      ],
+      "space-infix-ops": "error"
+    }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
