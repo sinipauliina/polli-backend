@@ -78,10 +78,9 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   passport.authenticate('local-login', (err, user) => {
+    console.log('Nyt ollaan backendissä. LOGIN')
     if (err || !user) {
-      return res
-        .status(422)
-        .json({message: 'Please provide the credentials.', user: user})
+      return res.status(422).json({message: 'Please provide the credentials.'})
     }
 
     req.login(user, err => {
@@ -111,6 +110,7 @@ router.post('/logout', (req, res) => {
     req.session.destroy()
   }
 
+  console.log('Nyt ollaan backendissä. LOGOUT')
   return res.status(200).json({message: 'Succesfully logged out!'})
 })
 
