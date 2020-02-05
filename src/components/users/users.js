@@ -61,11 +61,13 @@ router.post('/register', (req, res) => {
     user.save((err, user) => {
       if (err) {
         console.log('Registration failed. Reason: ' + err)
+
         return res
           .status(422)
           .json({message: 'This username is already in use.'})
       } else {
         console.log('Registered succesfully: ' + user.username)
+
         return res.status(200).json({message: 'Successfully registered!'})
       }
     })
@@ -78,7 +80,8 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   passport.authenticate('local-login', (err, user) => {
-    console.log('Nyt ollaan backendissä. LOGIN')
+    console.log('BACKEND - LOGIN')
+
     if (err || !user) {
       return res.status(422).json({message: 'Please provide the credentials.'})
     }
@@ -110,7 +113,8 @@ router.post('/logout', (req, res) => {
     req.session.destroy()
   }
 
-  console.log('Nyt ollaan backendissä. LOGOUT')
+  console.log('BACKEND - LOGOUT')
+
   return res.status(200).json({message: 'Succesfully logged out!'})
 })
 

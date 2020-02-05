@@ -29,10 +29,7 @@ const mongoDB =
   'mongodb+srv://sini:neJoBwArxhXT3t8K@simba-bionq.mongodb.net/pollidb'
 // Local mongoDB: 'mongodb://127.0.0.1:27017/pollidb'
 
-mongoose.connect(
-  mongoDB,
-  {useNewUrlParser: true}
-)
+mongoose.connect(mongoDB, {useNewUrlParser: true})
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error: '))
@@ -173,12 +170,22 @@ app.use('/users', usersRouter)
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404))
+  if (req.url.startsWith('/sockjs-node/')) {
+    return
+  } else {
+    next(createError(404))
+  }
 })
 
 // Error handler
 app.use((err, req, res) => {
-  return res.status(err.status || 500).send('Error! ' + err.message)
+  // set locals, only providing error in development
+  res.locals.message = err.message
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
+
+  return res
+    .status(err.status || 500)
+    .send('Server responded with status: ' + err.message)
 })
 
 export default app
