@@ -124,7 +124,6 @@ router.put('/:id/vote/:option', (req, res) => {
       })
     }
 
-    // Onko tämä ihan oikein, vai toimiiko vahingossa?
     let foundOption = result.options.find(option => {
       return option._id == req.params.option
     })
